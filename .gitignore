@@ -1,14 +1,11 @@
-# Ton gitignore actuel
 venv/
 .ipynb_checkpoints/
 __pycache__/
 
 # Fichiers spécifiques à ignorer
 lbl-tcp-3.tcp
-Openhealth_S-Grippal
 soi.tsv
-streamlit_arima_rolling.py
 time_series.pdf
 
-# Données volumineuses ou sensibles (optionnel, selon ton choix)
+# Données volumineuses ou sensibles
 *.csv
