@@ -1,5 +1,11 @@
+# Environnements virtuels
+.venv/
 venv/
+
+# Notebooks
 .ipynb_checkpoints/
+
+# Fichiers Python compilés
 __pycache__/
 
 # Fichiers spécifiques à ignorer
@@ -7,5 +13,11 @@ lbl-tcp-3.tcp
 soi.tsv
 time_series.pdf
 
-# Données volumineuses ou sensibles
+# Ignorer tous les CSV par défaut
 *.csv
+
+# Mais garder explicitement ceux-ci
+!y_test.csv
+!yhat_aligned_aic_bic.csv
+!yhat_aligned_rmse.csv
+!Openhealth_S-Grippal.csv
