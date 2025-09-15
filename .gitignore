@@ -9,3 +9,6 @@ Openhealth_S-Grippal
 soi.tsv
 streamlit_arima_rolling.py
 time_series.pdf
+
+# Données volumineuses ou sensibles (optionnel, selon ton choix)
+*.csv
