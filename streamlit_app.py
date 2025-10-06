@@ -38,6 +38,7 @@ MAX_PTS      = 1000               # cap visuel
 SMOOTH_SPAN  = 3                  # EMA (0/1 pour off)
 JPEG_QUALITY = 70                 # qualité JPEG (taille vs netteté)
 DPI          = 90                 # DPI bas -> plus léger
+LINE_SCALE   = 3.0                # facteur pour épaissir les courbes
 
 # --------- Pré-calculs ---------
 idx = y_test.index
@@ -81,13 +82,29 @@ ax.set_title(
     fontsize=18
 )
 
-(line_true,) = ax.plot([], [], linewidth=1.8, label="Internet traffic", color="#87CEEB")
-(line_aic,)  = ax.plot([], [], linewidth=2, linestyle="--", label="ARIMA AIC", color="red")
-(line_rms,)  = ax.plot([], [], linewidth=2, linestyle="--", label="ARIMA Backtesting", color="orange")
+(line_true,) = ax.plot([], [], linewidth=1.8 * LINE_SCALE,
+                       label="Internet traffic", color="#87CEEB")
+(line_aic,)  = ax.plot([], [], linewidth=2.0 * LINE_SCALE, linestyle="--",
+                       label="ARIMA AIC", color="red")
+(line_rms,)  = ax.plot([], [], linewidth=2.0 * LINE_SCALE, linestyle="--",
+                       label="ARIMA Backtesting", color="orange")
 
-vline = ax.axvline(x_full_num[0], linestyle="--", linewidth=1, alpha=0.5, color="#666666")
+vline = ax.axvline(
+    x_full_num[0],
+    linestyle="--",
+    linewidth=1.0 * LINE_SCALE,
+    alpha=0.5,
+    color="#666666"
+)
 
-leg = ax.legend(loc="upper left")
+# Agrandissement de la légende ×3
+base_size = plt.rcParams.get("legend.fontsize", 10)
+if isinstance(base_size, str):
+    # Valeur numérique par défaut si rcParams renvoie un mot-clé ("medium", etc.)
+    base_size = 10
+leg = ax.legend(loc="upper left", fontsize=3 * base_size)
+
+# Style de la légende
 leg.get_frame().set_facecolor("black")
 leg.get_frame().set_edgecolor("white")
 for t in leg.get_texts():
